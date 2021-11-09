@@ -34,7 +34,7 @@ class Patients(models.Model):
 # Создание базы данных с анализами
 class Analyses(models.Model):
     taken_date = models.DateField('Дата исследования', null=True)
-    group_number = models.IntegerField()
+    # group_number = models.IntegerField()
     patient = models.ForeignKey(Patients, on_delete=models.CASCADE)
 
     leukocyte = models.FloatField('Лейкоциты - WBC')
@@ -48,12 +48,15 @@ class Analyses(models.Model):
     toxic_grit = models.FloatField('Токсическая зернистость')
     plasma = models.FloatField('Плазматические клетки')
 
-    stab = models.IntegerField()
-    segmented = models.IntegerField()
+    # stab = models.IntegerField()
+    # segmented = models.IntegerField()
 
     class Meta:
         verbose_name_plural = 'Анализы'
         verbose_name = 'Анализ'
+
+    def __str__(self):
+        return self.taken_date
 
 
 # class Reports(models.Model):

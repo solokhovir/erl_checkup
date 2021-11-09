@@ -1,3 +1,2 @@
-from django.shortcuts import render
+from web.models import Sex, Analyses, Patients
 
-# Create your views here.
