@@ -1,8 +1,14 @@
 from django.urls import path
-from .apiviews import AnalysesView
+from rest_framework import routers
+from .apiviews import AnalysesViewSet, PatientsViewSet, SexViewSet
+from web import views
 
 app_name = "erl_checkup"
 
-urlpatterns = [
-    path('analyses/', AnalysesView.as_view()),
-]
+router = routers.DefaultRouter()
+router.register('analyses', AnalysesViewSet, 'analyses')
+router.register('patients', PatientsViewSet, 'patients')
+router.register('sex', SexViewSet, 'sex')
+path('login', views.login)
+
+urlpatterns = router.urls

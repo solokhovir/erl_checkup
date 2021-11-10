@@ -17,7 +17,7 @@ class Sex(models.Model):
 class Patients(models.Model):
     name = models.CharField('ФИО', max_length=1000)
     birthday = models.DateField('Дата рождения', null=True)
-    sex = models.ForeignKey(Sex, on_delete=models.CASCADE)
+    sex = models.ForeignKey(Sex, on_delete=models.CASCADE, verbose_name=u"Пол")
     is_confirm_consent = models.BooleanField('Согласие на обработку данных', default=False)
     email = models.EmailField('e-mail')
     phone = models.CharField('Телефон', max_length=12)
@@ -35,7 +35,7 @@ class Patients(models.Model):
 class Analyses(models.Model):
     taken_date = models.DateField('Дата исследования', null=True)
     # group_number = models.IntegerField()
-    patient = models.ForeignKey(Patients, on_delete=models.CASCADE)
+    patient = models.ForeignKey(Patients, on_delete=models.CASCADE, verbose_name=u"ФИО Пациента")
 
     leukocyte = models.FloatField('Лейкоциты - WBC')
     lymphocytes = models.FloatField('Лимфоциты - LYM%')
